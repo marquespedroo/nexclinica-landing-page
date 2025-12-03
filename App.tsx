@@ -16,8 +16,8 @@ const App: React.FC = () => {
     <div className="w-full bg-black text-white overflow-x-hidden">
       <Header />
       <main>
-        {/* Hero Section - Full viewport height */}
-        <section className="h-screen">
+        {/* Hero Section - Auto height on mobile (content + particles), full viewport on desktop */}
+        <section className="min-h-screen md:h-screen">
           <Hero />
         </section>
 

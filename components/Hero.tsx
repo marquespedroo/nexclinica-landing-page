@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
   const featuresReveal = useScrollReveal();
 
   return (
-    <div className="relative w-full min-h-screen md:h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-950/40 via-black to-black overflow-hidden">
+    <div className="relative w-full h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-950/40 via-black to-black overflow-hidden">
 
       {/* 3D Particle Layer - Hidden on mobile (shown below), positioned right on desktop */}
       <div className="absolute inset-0 z-0 hidden md:block">
