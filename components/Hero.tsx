@@ -34,11 +34,11 @@ const Hero: React.FC = () => {
   const featuresReveal = useScrollReveal();
 
   return (
-    <div className="relative w-full h-full flex items-center bg-gradient-to-br from-brand-950/40 via-black to-black overflow-hidden">
+    <div className="relative w-full min-h-screen md:h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-950/40 via-black to-black overflow-hidden">
 
-      {/* 3D Particle Layer - Positioned to the right */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-full md:w-2/3 h-full translate-x-[10%] -translate-y-[5%]">
+      {/* 3D Particle Layer - Hidden on mobile (shown below), positioned right on desktop */}
+      <div className="absolute inset-0 z-0 hidden md:block">
+        <div className="absolute top-0 right-0 w-2/3 h-full translate-x-[10%] -translate-y-[5%]">
           <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-brand-500 bg-transparent"></div>}>
             <ParticleLogo />
           </Suspense>
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content Layer - Aligned to the left */}
-      <div className="relative z-10 container mx-auto px-6 md:px-12 pointer-events-none pt-24 pb-8 h-full flex items-center">
+      <div className="relative z-10 container mx-auto px-5 md:px-12 pointer-events-none pt-20 md:pt-24 pb-6 md:pb-8 md:h-full flex items-center">
         <div className="max-w-xl text-left">
 
           {/* Main Headline - Kinetic Typography */}
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
           {/* Feature Grid - Nexclinica Specific */}
           <div ref={featuresReveal.ref}>
             <div
-              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mt-10 text-left transition-all duration-700 ${
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 md:mt-10 text-left transition-all duration-700 ${
                 featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}
               style={{ transitionDelay: '800ms' }}
@@ -143,6 +143,13 @@ const Hero: React.FC = () => {
           </div>
 
         </div>
+      </div>
+
+      {/* Mobile Particle Section - Shown only on mobile as its own section */}
+      <div className="relative z-10 w-full h-[50vh] md:hidden">
+        <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-brand-500 bg-transparent"></div>}>
+          <ParticleLogo />
+        </Suspense>
       </div>
     </div>
   );
