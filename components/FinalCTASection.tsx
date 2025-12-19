@@ -68,7 +68,7 @@ const FinalCTASection: React.FC = () => {
 
           {/* Subheadline */}
           <p className="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Agende uma demonstração gratuita e veja a Nexclinica funcionando na prática.
+            Agende uma demonstração gratuita e veja a nexclinica funcionando na prática.
           </p>
 
           {/* CTA Button */}
@@ -78,7 +78,7 @@ const FinalCTASection: React.FC = () => {
             style={{ transitionDelay: '300ms' }}
           >
             <a
-              href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
+              href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica."
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-10 py-5 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-[0_0_40px_rgba(16,185,129,0.5)] inline-flex items-center gap-3"

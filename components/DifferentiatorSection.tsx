@@ -92,7 +92,7 @@ const DifferentiatorSection: React.FC = () => {
           style={{ transitionDelay: '200ms' }}
         >
           <p className="text-xl text-slate-900 dark:text-white font-semibold">
-            A Nexclinica nasceu <span className="text-brand-400">diferente</span>:
+            A nexclinica nasceu <span className="text-brand-400">diferente</span>:
           </p>
         </div>
 

@@ -75,10 +75,10 @@ const SolutionSection: React.FC = () => {
             className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 max-w-4xl mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
-            Nexclinica: o sistema que conecta tudo — e ainda responde seus pacientes por você.
+            nexclinica: o sistema que conecta tudo — e ainda responde seus pacientes por você.
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            A Nexclinica é um ERP completo feito especialmente para clínicas médicas. Em uma única plataforma, você gerencia:
+            A nexclinica é um ERP completo feito especialmente para clínicas médicas. Em uma única plataforma, você gerencia:
           </p>
         </div>
 

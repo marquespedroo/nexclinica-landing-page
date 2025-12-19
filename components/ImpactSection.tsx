@@ -109,7 +109,7 @@ const ImpactSection: React.FC = () => {
           style={{ transitionDelay: '200ms' }}
         >
           <p className="text-xl text-slate-900 dark:text-white">
-            A Nexclinica ajuda clínicas a:
+            A nexclinica ajuda clínicas a:
           </p>
         </div>
 

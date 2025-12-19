@@ -88,7 +88,7 @@ const TargetAudienceSection: React.FC = () => {
             Feito para clínicas que querem crescer sem aumentar a equipe
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            A Nexclinica é ideal para:
+            A nexclinica é ideal para:
           </p>
         </div>
 
@@ -127,7 +127,7 @@ const TargetAudienceSection: React.FC = () => {
               Se você sente que sua clínica poderia atender mais pacientes, faturar mais e trabalhar de forma mais organizada —
             </p>
             <p className="text-2xl font-semibold text-slate-900 dark:text-white">
-              a <span className="text-brand-400">Nexclinica</span> foi feita para você.
+              a <span className="text-brand-400">nexclinica</span> foi feita para você.
             </p>
           </div>
         </div>

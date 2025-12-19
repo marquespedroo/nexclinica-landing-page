@@ -51,7 +51,7 @@ const FAQSection: React.FC = () => {
       items: [
         {
           question: 'O que exatamente essa IA faz no meu WhatsApp?',
-          answer: 'A IA da Nexclinica funciona como uma recepcionista virtual que trabalha 24 horas. Quando um paciente manda mensagem para o WhatsApp da sua clínica, a IA: Responde automaticamente (em menos de 5 segundos), entende o que o paciente quer (agendar, remarcar, tirar dúvida sobre horário), consulta a agenda real da clínica e oferece horários disponíveis, agenda a consulta direto no sistema sem precisar de ninguém, envia lembretes antes da consulta, e pede confirmação — se o paciente não puder ir, já oferece outro horário. Tudo isso acontece automaticamente, mesmo de madrugada ou no fim de semana.'
+          answer: 'A IA da nexclinica funciona como uma recepcionista virtual que trabalha 24 horas. Quando um paciente manda mensagem para o WhatsApp da sua clínica, a IA: Responde automaticamente (em menos de 5 segundos), entende o que o paciente quer (agendar, remarcar, tirar dúvida sobre horário), consulta a agenda real da clínica e oferece horários disponíveis, agenda a consulta direto no sistema sem precisar de ninguém, envia lembretes antes da consulta, e pede confirmação — se o paciente não puder ir, já oferece outro horário. Tudo isso acontece automaticamente, mesmo de madrugada ou no fim de semana.'
         },
         {
           question: 'Preciso trocar o número do WhatsApp da minha clínica?',
@@ -77,15 +77,15 @@ const FAQSection: React.FC = () => {
       items: [
         {
           question: 'O que é esse tal de "ERP"?',
-          answer: 'ERP é só um nome técnico para "sistema de gestão". No caso da Nexclinica, é um programa onde você controla tudo da sua clínica em um lugar só: Agenda (marca, remarca, visualiza horários de todos os profissionais), Prontuário (histórico do paciente, anotações das consultas, documentos) e Financeiro (controle de pagamentos, cobranças, relatórios de faturamento). Em vez de ter um programa para cada coisa (ou pior, planilhas e papéis), você tem tudo integrado.'
+          answer: 'ERP é só um nome técnico para "sistema de gestão". No caso da nexclinica, é um programa onde você controla tudo da sua clínica em um lugar só: Agenda (marca, remarca, visualiza horários de todos os profissionais), Prontuário (histórico do paciente, anotações das consultas, documentos) e Financeiro (controle de pagamentos, cobranças, relatórios de faturamento). Em vez de ter um programa para cada coisa (ou pior, planilhas e papéis), você tem tudo integrado.'
         },
         {
           question: 'Vou precisar instalar algum programa no computador?',
-          answer: 'Não. A Nexclinica funciona 100% no navegador de internet (Chrome, Firefox, Edge...). Você acessa pelo site, faz login, e pronto. Funciona em qualquer computador, tablet ou até celular. Não precisa instalar nada, não precisa de técnico de informática, não ocupa espaço no seu computador.'
+          answer: 'Não. A nexclinica funciona 100% no navegador de internet (Chrome, Firefox, Edge...). Você acessa pelo site, faz login, e pronto. Funciona em qualquer computador, tablet ou até celular. Não precisa instalar nada, não precisa de técnico de informática, não ocupa espaço no seu computador.'
         },
         {
           question: 'Preciso de internet boa para usar?',
-          answer: 'Precisa de internet, sim — como qualquer sistema online hoje em dia. Mas não precisa ser uma internet super rápida. Se você consegue assistir vídeos no YouTube ou usar redes sociais sem travar, consegue usar a Nexclinica tranquilamente.'
+          answer: 'Precisa de internet, sim — como qualquer sistema online hoje em dia. Mas não precisa ser uma internet super rápida. Se você consegue assistir vídeos no YouTube ou usar redes sociais sem travar, consegue usar a nexclinica tranquilamente.'
         },
         {
           question: 'Quantas pessoas podem usar ao mesmo tempo?',
@@ -99,14 +99,14 @@ const FAQSection: React.FC = () => {
       items: [
         {
           question: 'Já uso outro sistema na minha clínica. Preciso jogar tudo fora?',
-          answer: 'Depende do sistema. A Nexclinica foi pensada para ser completa — agenda, prontuário e financeiro integrados. O ideal é usar ela como sistema principal. Mas entendemos que migrar de sistema dá trabalho. Por isso: se você usa o Feegow, sim, conseguimos integrar. A IA pode consultar e agendar direto no Feegow, e você continua usando o sistema que já conhece. Outros sistemas: avaliamos caso a caso. Alguns têm integração possível, outros não. Fale com nossa equipe para verificarmos juntos.'
+          answer: 'Depende do sistema. A nexclinica foi pensada para ser completa — agenda, prontuário e financeiro integrados. O ideal é usar ela como sistema principal. Mas entendemos que migrar de sistema dá trabalho. Por isso: se você usa o Feegow, sim, conseguimos integrar. A IA pode consultar e agendar direto no Feegow, e você continua usando o sistema que já conhece. Outros sistemas: avaliamos caso a caso. Alguns têm integração possível, outros não. Fale com nossa equipe para verificarmos juntos.'
         },
         {
           question: 'Como funciona a integração com o Feegow?',
-          answer: 'Se você já usa o Feegow e está satisfeito, pode manter. Nesse caso, a Nexclinica entra como uma "camada de atendimento inteligente": a IA conversa com o paciente pelo WhatsApp e agenda direto no Feegow. Você ganha o atendimento automático 24h sem precisar trocar o sistema de gestão que já conhece.'
+          answer: 'Se você já usa o Feegow e está satisfeito, pode manter. Nesse caso, a nexclinica entra como uma "camada de atendimento inteligente": a IA conversa com o paciente pelo WhatsApp e agenda direto no Feegow. Você ganha o atendimento automático 24h sem precisar trocar o sistema de gestão que já conhece.'
         },
         {
-          question: 'E se eu quiser migrar do meu sistema atual para a Nexclinica?',
+          question: 'E se eu quiser migrar do meu sistema atual para a nexclinica?',
           answer: 'Ajudamos você nessa transição. Podemos importar sua base de pacientes e histórico de agendamentos para você não começar do zero. O processo varia conforme o sistema atual, mas nossa equipe acompanha tudo.'
         }
       ]
@@ -120,12 +120,12 @@ const FAQSection: React.FC = () => {
           answer: 'Sim. Levamos segurança muito a sério, especialmente por lidar com dados de saúde. Algumas medidas que tomamos: todos os dados são criptografados (embaralhados de um jeito que só o sistema consegue ler), os servidores ficam em data centers seguros com backup automático, cada usuário só acessa o que tem permissão para ver, e registramos quem acessou o quê e quando (isso se chama "auditoria").'
         },
         {
-          question: 'A Nexclinica está adequada à LGPD?',
+          question: 'A nexclinica está adequada à LGPD?',
           answer: 'Sim. O sistema foi construído desde o início pensando na LGPD (a lei de proteção de dados). Isso significa: pedimos só os dados necessários, os dados ficam protegidos e não são compartilhados com terceiros, você consegue atender pedidos de pacientes que queiram saber quais dados têm cadastrados, e temos termos de uso e política de privacidade claros. Se um paciente pedir para apagar os dados dele, você consegue fazer isso pelo sistema.'
         },
         {
           question: 'Quem pode ver as conversas do WhatsApp?',
-          answer: 'As conversas ficam registradas no sistema para histórico e qualidade do atendimento. Apenas pessoas autorizadas da sua clínica (que você define) podem visualizar. Nós, da Nexclinica, não ficamos lendo conversas dos seus pacientes.'
+          answer: 'As conversas ficam registradas no sistema para histórico e qualidade do atendimento. Apenas pessoas autorizadas da sua clínica (que você define) podem visualizar. Nós, da nexclinica, não ficamos lendo conversas dos seus pacientes.'
         }
       ]
     },
@@ -134,7 +134,7 @@ const FAQSection: React.FC = () => {
       title: 'Sobre Preços e Custos',
       items: [
         {
-          question: 'Quanto custa a Nexclinica?',
+          question: 'Quanto custa a nexclinica?',
           answer: 'Trabalhamos com planos mensais que variam conforme o tamanho da clínica (quantidade de profissionais, volume de atendimentos). Entre em contato para receber um orçamento personalizado — não temos pegadinha nem preço escondido. O que podemos adiantar: nosso modelo foi pensado para ser acessível a clínicas pequenas e médias, não só para grandes redes.'
         },
         {
@@ -142,7 +142,7 @@ const FAQSection: React.FC = () => {
           answer: 'Cobramos uma taxa única de implantação, que cobre a configuração do sistema, treinamento da equipe e migração de dados. Não temos fidelidade: você fica porque quer, não porque está preso em contrato.'
         },
         {
-          question: 'Vou economizar dinheiro usando a Nexclinica?',
+          question: 'Vou economizar dinheiro usando a nexclinica?',
           answer: 'A economia vem de vários lados: menos faltas (lembretes automáticos reduzem o "não comparecimento", que é dinheiro perdido), mais agendamentos (a IA captura pacientes que mandam mensagem fora do horário comercial), menos retrabalho (equipe para de perder tempo confirmando consulta por telefone), e mais eficiência (com tudo integrado, menos erros e menos tempo gasto procurando informação). Muitas clínicas conseguem pagar o sistema só com a redução de faltas.'
         },
         {
@@ -189,7 +189,7 @@ const FAQSection: React.FC = () => {
       items: [
         {
           question: 'Funciona para qualquer especialidade médica?',
-          answer: 'Sim. A Nexclinica atende clínicas de diversas especialidades: clínica geral, pediatria, dermatologia, ortopedia, fisioterapia, psicologia, odontologia, e muitas outras. A IA pode ser personalizada para entender os termos e fluxos da sua especialidade — por exemplo, saber que fisioterapia trabalha com sessões, ou que algumas consultas precisam de preparo específico.'
+          answer: 'Sim. A nexclinica atende clínicas de diversas especialidades: clínica geral, pediatria, dermatologia, ortopedia, fisioterapia, psicologia, odontologia, e muitas outras. A IA pode ser personalizada para entender os termos e fluxos da sua especialidade — por exemplo, saber que fisioterapia trabalha com sessões, ou que algumas consultas precisam de preparo específico.'
         },
         {
           question: 'Posso usar só a IA do WhatsApp, sem o sistema de gestão?',
@@ -197,7 +197,7 @@ const FAQSection: React.FC = () => {
         },
         {
           question: 'Não entendo muito de tecnologia. Vou conseguir usar?',
-          answer: 'Se você usa WhatsApp, Facebook ou faz compras online, vai conseguir usar a Nexclinica. O sistema foi desenhado para ser simples. E nossa equipe está sempre disponível para ajudar nas primeiras semanas, até você pegar o jeito. Não precisa entender de tecnologia. Precisa só querer melhorar a gestão da sua clínica — o resto a gente resolve junto.'
+          answer: 'Se você usa WhatsApp, Facebook ou faz compras online, vai conseguir usar a nexclinica. O sistema foi desenhado para ser simples. E nossa equipe está sempre disponível para ajudar nas primeiras semanas, até você pegar o jeito. Não precisa entender de tecnologia. Precisa só querer melhorar a gestão da sua clínica — o resto a gente resolve junto.'
         }
       ]
     }
@@ -305,7 +305,7 @@ const FAQSection: React.FC = () => {
               Fale com a gente! Estamos prontos para responder qualquer pergunta, sem compromisso.
             </p>
             <a
-              href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
+              href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"

@@ -94,7 +94,7 @@ const ComparisonSection: React.FC = () => {
             Nossos diferenciais
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            Veja como a Nexclinica se destaca em relação às soluções tradicionais do mercado.
+            Veja como a nexclinica se destaca em relação às soluções tradicionais do mercado.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ const ComparisonSection: React.FC = () => {
                 <span className="text-slate-400 text-sm font-medium">Concorrência</span>
               </div>
               <div className="p-4 md:p-6 text-center border-l border-brand-500/30 bg-brand-500/5 dark:bg-brand-500/10">
-                <span className="text-brand-400 text-sm font-bold">Nexclinica</span>
+                <span className="text-brand-400 text-sm font-bold">nexclinica</span>
               </div>
             </div>
 
@@ -145,7 +145,7 @@ const ComparisonSection: React.FC = () => {
                   )}
                 </div>
 
-                {/* Nexclinica */}
+                {/* nexclinica */}
                 <div className="p-4 md:p-6 flex items-center justify-center border-l border-brand-500/30 bg-brand-500/5">
                   {row.isText ? (
                     <span className="text-brand-400 text-sm font-semibold text-center">{row.nexclinica}</span>
@@ -170,7 +170,7 @@ const ComparisonSection: React.FC = () => {
             Pronto para transformar a gestão da sua clínica?
           </p>
           <a
-            href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
+            href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"

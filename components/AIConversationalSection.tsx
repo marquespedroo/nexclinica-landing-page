@@ -72,7 +72,7 @@ const AIConversationalSection: React.FC = () => {
             Uma assistente de IA que realmente entende sua clínica
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            Esqueça chatbots que só respondem "aguarde um momento". A Nexclinica tem uma IA conversacional nativa no WhatsApp que:
+            Esqueça chatbots que só respondem "aguarde um momento". A nexclinica tem uma IA conversacional nativa no WhatsApp que:
           </p>
         </div>
 
@@ -144,7 +144,7 @@ const AIConversationalSection: React.FC = () => {
                         <Bot className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="text-white text-xs font-medium">Nexclinica IA</p>
+                        <p className="text-white text-xs font-medium">nexclinica IA</p>
                         <p className="text-brand-200 text-[10px]">Respondendo agora</p>
                       </div>
                     </div>

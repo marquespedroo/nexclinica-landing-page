@@ -22,7 +22,7 @@ const Header: React.FC = () => {
     { label: 'Dúvidas', href: '#faq' },
   ];
 
-  const whatsappLink = 'https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica.';
+  const whatsappLink = 'https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.';
 
   const { theme, toggleTheme } = useTheme();
 
@@ -39,11 +39,11 @@ const Header: React.FC = () => {
           <a href="/" className="flex items-center group">
             <img
               src="/ALTERNATIVA.png"
-              alt="Nexclinica Logo"
+              alt="nexclinica Logo"
               className={`h-9 w-auto ${theme === 'dark' ? 'brightness-100' : 'brightness-0'}`}
             />
             <span className="text-xl font-bold dark:text-white text-slate-900 tracking-tight -ml-1">
-              Nex<span className="text-brand-600 dark:text-brand-400">clinica</span>
+              nex<span className="text-brand-600 dark:text-brand-400">clinica</span>
             </span>
           </a>
 
