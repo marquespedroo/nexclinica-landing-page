@@ -31,14 +31,14 @@ const FinalCTASection: React.FC = () => {
   return (
     <section
       ref={sectionReveal.ref}
-      className="relative py-32 bg-gradient-to-b from-black via-brand-950/30 to-black overflow-hidden"
+      className="relative py-32 bg-gradient-to-b from-white via-brand-50/30 to-white dark:from-black dark:via-brand-950/30 dark:to-black overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="h-full w-full" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
             backgroundSize: '50px 50px'
           }} />
         </div>
@@ -49,9 +49,8 @@ const FinalCTASection: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div
-          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
-            sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`}
         >
           {/* Badge */}
           <span className="inline-block px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-medium mb-8">
@@ -61,29 +60,28 @@ const FinalCTASection: React.FC = () => {
 
           {/* Main Headline */}
           <h2
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.02em' }}
           >
             Pronto para transformar a gestão da sua clínica?
           </h2>
 
           {/* Subheadline */}
-          <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             Agende uma demonstração gratuita e veja a Nexclinica funcionando na prática.
           </p>
 
           {/* CTA Button */}
           <div
-            className={`text-center transition-all duration-700 ${
-              sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`text-center transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
             style={{ transitionDelay: '300ms' }}
           >
             <a
               href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-10 py-5 bg-brand-500 hover:bg-brand-400 text-black text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-[0_0_40px_rgba(16,185,129,0.5)] inline-flex items-center gap-3"
+              className="group relative px-10 py-5 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-[0_0_40px_rgba(16,185,129,0.5)] inline-flex items-center gap-3"
             >
               <MessageCircle className="w-6 h-6" />
               Falar com Vendas
@@ -93,9 +91,8 @@ const FinalCTASection: React.FC = () => {
 
           {/* Trust indicators */}
           <div
-            className={`mt-12 flex flex-wrap items-center justify-center gap-8 text-slate-500 text-sm transition-all duration-700 ${
-              sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`mt-12 flex flex-wrap items-center justify-center gap-8 text-slate-500 text-sm transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
             style={{ transitionDelay: '500ms' }}
           >
             <span className="flex items-center gap-2">

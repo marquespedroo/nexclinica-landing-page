@@ -55,12 +55,12 @@ const DifferentiatorSection: React.FC = () => {
     <section
       id="diferenciais"
       ref={sectionReveal.ref}
-      className="relative py-24 bg-gradient-to-b from-black via-brand-950/20 to-black overflow-hidden"
+      className="relative py-24 bg-gradient-to-b from-white via-brand-50/20 to-white dark:from-black dark:via-brand-950/20 dark:to-black overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -76,12 +76,12 @@ const DifferentiatorSection: React.FC = () => {
             Por Que Somos Diferentes
           </span>
           <h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
             Não é mais um chatbot. É um ERP com inteligência de verdade.
           </h2>
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
             Outras soluções do mercado oferecem chatbots genéricos que não entendem o contexto da sua clínica. Ou sistemas de gestão que não conversam com o WhatsApp. Ou integrações frágeis que quebram a todo momento.
           </p>
         </div>
@@ -91,7 +91,7 @@ const DifferentiatorSection: React.FC = () => {
           className={`text-center mb-12 transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           style={{ transitionDelay: '200ms' }}
         >
-          <p className="text-xl text-white font-semibold">
+          <p className="text-xl text-slate-900 dark:text-white font-semibold">
             A Nexclinica nasceu <span className="text-brand-400">diferente</span>:
           </p>
         </div>
@@ -101,9 +101,8 @@ const DifferentiatorSection: React.FC = () => {
           {differentiators.map((diff, i) => (
             <div
               key={i}
-              className={`p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-500/30 hover:bg-white/[0.07] transition-all duration-500 group ${
-                sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`p-6 rounded-2xl bg-white/50 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-500/30 hover:bg-white/80 dark:hover:bg-white/[0.07] transition-all duration-500 group ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${300 + i * 100}ms` }}
             >
               <div className="flex items-start gap-4">
@@ -111,10 +110,10 @@ const DifferentiatorSection: React.FC = () => {
                   <diff.icon className="w-7 h-7 text-brand-400" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-xl mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  <h3 className="text-slate-900 dark:text-white font-semibold text-xl mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                     {diff.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{diff.desc}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{diff.desc}</p>
                 </div>
               </div>
             </div>
@@ -123,16 +122,15 @@ const DifferentiatorSection: React.FC = () => {
 
         {/* Closing Statement */}
         <div
-          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${
-            sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
           style={{ transitionDelay: '800ms' }}
         >
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10">
-            <p className="text-xl text-slate-300 leading-relaxed mb-2">
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-black/5 to-transparent dark:from-white/5 dark:to-transparent border border-black/10 dark:border-white/10">
+            <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-2">
               Enquanto outros adaptam ferramentas genéricas,
             </p>
-            <p className="text-2xl font-semibold text-white">
+            <p className="text-2xl font-semibold text-slate-900 dark:text-white">
               nós construímos do zero para resolver o problema <span className="text-brand-400">de verdade</span>.
             </p>
           </div>

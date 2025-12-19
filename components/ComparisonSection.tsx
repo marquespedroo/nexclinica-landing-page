@@ -71,12 +71,12 @@ const ComparisonSection: React.FC = () => {
   return (
     <section
       ref={sectionReveal.ref}
-      className="relative min-h-screen bg-gradient-to-b from-brand-950/30 to-black py-24 overflow-hidden"
+      className="relative min-h-screen bg-gradient-to-b from-brand-50 via-white to-brand-50/50 dark:bg-black dark:from-black dark:via-black dark:to-black py-24 overflow-hidden"
     >
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -88,28 +88,28 @@ const ComparisonSection: React.FC = () => {
             Comparativo
           </span>
           <h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
             Nossos diferenciais
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
             Veja como a Nexclinica se destaca em relação às soluções tradicionais do mercado.
           </p>
         </div>
 
         {/* Comparison Table */}
         <div className={`max-w-4xl mx-auto transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
-          <div className="rounded-2xl overflow-hidden border border-white/10 backdrop-blur-xl">
+          <div className="rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 backdrop-blur-xl">
             {/* Table Header */}
-            <div className="grid grid-cols-3 bg-white/5">
+            <div className="grid grid-cols-3 bg-white/40 dark:bg-white/5">
               <div className="p-4 md:p-6">
-                <span className="text-slate-400 text-sm font-medium">Funcionalidade</span>
+                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">Funcionalidade</span>
               </div>
               <div className="p-4 md:p-6 text-center border-l border-white/10">
                 <span className="text-slate-400 text-sm font-medium">Concorrência</span>
               </div>
-              <div className="p-4 md:p-6 text-center border-l border-brand-500/30 bg-brand-500/10">
+              <div className="p-4 md:p-6 text-center border-l border-brand-500/30 bg-brand-500/5 dark:bg-brand-500/10">
                 <span className="text-brand-400 text-sm font-bold">Nexclinica</span>
               </div>
             </div>
@@ -118,20 +118,20 @@ const ComparisonSection: React.FC = () => {
             {comparisonData.map((row, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-3 border-t border-white/10 transition-all duration-500 ${sectionReveal.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                className={`grid grid-cols-3 border-t border-black/10 dark:border-white/10 transition-all duration-500 ${sectionReveal.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                 style={{ transitionDelay: `${300 + i * 100}ms` }}
               >
                 {/* Feature Name */}
                 <div className="p-4 md:p-6 flex items-center">
-                  <span className="text-white text-sm font-medium">{row.feature}</span>
+                  <span className="text-slate-900 dark:text-white text-sm font-medium">{row.feature}</span>
                 </div>
 
                 {/* Competitor */}
-                <div className="p-4 md:p-6 flex items-center justify-center border-l border-white/10">
+                <div className="p-4 md:p-6 flex items-center justify-center border-l border-black/10 dark:border-white/10">
                   {row.isText ? (
-                    <span className="text-slate-400 text-sm text-center">{row.competitor}</span>
+                    <span className="text-slate-600 dark:text-slate-400 text-sm text-center">{row.competitor}</span>
                   ) : row.competitor === null ? (
-                    <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700/50 flex items-center justify-center">
                       <Minus className="w-4 h-4 text-slate-500" />
                     </div>
                   ) : row.competitor ? (
@@ -166,14 +166,14 @@ const ComparisonSection: React.FC = () => {
 
         {/* CTA */}
         <div className={`text-center mt-12 transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '800ms' }}>
-          <p className="text-slate-400 text-sm mb-6">
+          <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">
             Pronto para transformar a gestão da sua clínica?
           </p>
           <a
             href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-brand-500 hover:bg-brand-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"
+            className="inline-block px-8 py-4 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"
           >
             Falar com Vendas
           </a>

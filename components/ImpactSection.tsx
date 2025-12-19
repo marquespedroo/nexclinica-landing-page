@@ -71,12 +71,12 @@ const ImpactSection: React.FC = () => {
     <section
       id="impacto"
       ref={sectionReveal.ref}
-      className="relative py-24 bg-gradient-to-b from-black via-brand-950/20 to-black overflow-hidden"
+      className="relative py-24 bg-gradient-to-b from-white via-brand-50/20 to-white dark:from-black dark:via-brand-950/20 dark:to-black overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -93,12 +93,12 @@ const ImpactSection: React.FC = () => {
             Impacto
           </span>
           <h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
             Mais pacientes atendidos. Melhor experiência para todos.
           </h2>
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
             Cada consulta que deixa de ser perdida é um paciente que recebe cuidado no momento certo.
           </p>
         </div>
@@ -108,7 +108,7 @@ const ImpactSection: React.FC = () => {
           className={`text-center mb-12 transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           style={{ transitionDelay: '200ms' }}
         >
-          <p className="text-xl text-white">
+          <p className="text-xl text-slate-900 dark:text-white">
             A Nexclinica ajuda clínicas a:
           </p>
         </div>
@@ -118,9 +118,8 @@ const ImpactSection: React.FC = () => {
           {impacts.map((impact, i) => (
             <div
               key={i}
-              className={`p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-500/30 hover:bg-white/[0.07] transition-all duration-500 group ${
-                sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`p-6 rounded-2xl bg-white/50 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-500/30 hover:bg-white/80 dark:hover:bg-white/[0.07] transition-all duration-500 group ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${300 + i * 100}ms` }}
             >
               <div className="flex items-start gap-4">
@@ -129,14 +128,14 @@ const ImpactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-baseline gap-2 mb-1">
-                    <h3 className="text-white font-semibold text-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <h3 className="text-slate-900 dark:text-white font-semibold text-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {impact.title}
                     </h3>
                     {impact.stat !== '-' && (
                       <span className="text-brand-400 font-bold text-2xl">{impact.stat}</span>
                     )}
                   </div>
-                  <p className="text-slate-400 text-sm">{impact.desc}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">{impact.desc}</p>
                 </div>
               </div>
             </div>
@@ -145,14 +144,13 @@ const ImpactSection: React.FC = () => {
 
         {/* Mission Statement */}
         <div
-          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${
-            sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
           style={{ transitionDelay: '900ms' }}
         >
           <div className="p-8 rounded-2xl bg-gradient-to-br from-brand-500/10 to-transparent border border-brand-500/20">
             <Heart className="w-10 h-10 text-brand-400 mx-auto mb-4" />
-            <p className="text-2xl font-semibold text-white">
+            <p className="text-2xl font-semibold text-slate-900 dark:text-white">
               Acreditamos que a tecnologia deve <span className="text-brand-400">ampliar</span> o acesso à saúde, não complicá-lo.
             </p>
           </div>

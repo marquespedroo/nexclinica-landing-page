@@ -13,7 +13,7 @@ import FinalCTASection from './components/FinalCTASection';
 
 const App: React.FC = () => {
   return (
-    <div className="w-full bg-black text-white overflow-x-hidden">
+    <div className="w-full bg-slate-50 dark:bg-black text-slate-900 dark:text-white transition-colors duration-300 overflow-x-hidden">
       <Header />
       <main>
         {/* Hero Section - Auto height on mobile (content + particles), full viewport on desktop */}

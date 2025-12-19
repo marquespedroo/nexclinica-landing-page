@@ -51,12 +51,12 @@ const SolutionSection: React.FC = () => {
     <section
       id="solucao"
       ref={sectionReveal.ref}
-      className="relative min-h-screen bg-gradient-to-b from-black via-brand-950/20 to-black py-24 overflow-hidden"
+      className="relative min-h-screen bg-gradient-to-b from-white via-brand-50/50 to-white dark:from-black dark:via-brand-950/20 dark:to-black py-24 overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -72,12 +72,12 @@ const SolutionSection: React.FC = () => {
             A Solução
           </span>
           <h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-4xl mx-auto"
+            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 max-w-4xl mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
             Nexclinica: o sistema que conecta tudo — e ainda responde seus pacientes por você.
           </h2>
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
             A Nexclinica é um ERP completo feito especialmente para clínicas médicas. Em uma única plataforma, você gerencia:
           </p>
         </div>
@@ -90,27 +90,25 @@ const SolutionSection: React.FC = () => {
           {features.map((feature, i) => (
             <div
               key={i}
-              className={`p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-500/30 hover:bg-white/[0.07] transition-all duration-500 group ${
-                featuresReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`p-8 rounded-2xl bg-white/50 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-sm hover:border-brand-500/30 hover:bg-white/80 dark:hover:bg-white/[0.07] transition-all duration-500 group ${featuresReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
               <div className="w-14 h-14 rounded-2xl bg-brand-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <feature.icon className="w-7 h-7 text-brand-400" />
               </div>
-              <h3 className="text-white font-semibold text-xl mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              <h3 className="text-slate-900 dark:text-white font-semibold text-xl mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 {feature.title}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
             </div>
           ))}
         </div>
 
         {/* WhatsApp Differentiator */}
         <div
-          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${
-            featuresReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`max-w-3xl mx-auto text-center transition-all duration-700 ${featuresReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
           style={{ transitionDelay: '600ms' }}
         >
           <div className="p-8 rounded-2xl bg-gradient-to-br from-brand-500/10 to-transparent border border-brand-500/20">
@@ -118,7 +116,7 @@ const SolutionSection: React.FC = () => {
               <MessageCircle className="w-8 h-8 text-brand-400" />
               <span className="text-brand-400 text-lg font-semibold">WhatsApp</span>
             </div>
-            <p className="text-2xl font-semibold text-white">
+            <p className="text-2xl font-semibold text-slate-900 dark:text-white">
               Mas o grande diferencial está no que acontece no <span className="text-brand-400">WhatsApp</span>.
             </p>
           </div>

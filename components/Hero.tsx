@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
   const featuresReveal = useScrollReveal();
 
   return (
-    <div className="relative w-full h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-950/40 via-black to-black overflow-hidden">
+    <div className="relative w-full h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-50 via-white to-white dark:bg-black dark:from-black dark:via-black dark:to-black overflow-hidden transition-colors duration-300">
 
       {/* 3D Particle Layer - Hidden on mobile (shown below), positioned right on desktop */}
       <div className="absolute inset-0 z-0 hidden md:block">
@@ -52,23 +52,21 @@ const Hero: React.FC = () => {
           {/* Main Headline - Kinetic Typography */}
           <div ref={headlineReveal.ref}>
             <h1
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 transition-all duration-700 ${
-                headlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 transition-all duration-700 ${headlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
               style={{ transitionDelay: '200ms', fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.02em' }}
             >
-              <span className="text-white">O Futuro da sua </span>
-              <span className="text-brand-400">Clínica</span>
-              <span className="text-white"> Chegou</span>
+              <span className="text-slate-900 dark:text-white">O Futuro da sua </span>
+              <span className="text-brand-600 dark:text-brand-400">Clínica</span>
+              <span className="text-slate-900 dark:text-white"> Chegou</span>
             </h1>
           </div>
 
           {/* Subheadline */}
           <div ref={subheadlineReveal.ref}>
             <p
-              className={`text-base md:text-lg text-slate-300 mb-6 max-w-lg leading-relaxed transition-all duration-700 ${
-                subheadlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}
+              className={`text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 max-w-lg leading-relaxed transition-all duration-700 ${subheadlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               style={{ transitionDelay: '500ms', fontFamily: "'Montserrat', sans-serif" }}
             >
               Gestão unificada, CRM de WhatsApp nativo e o futuro dos assistentes de IA em um só lugar. Seus assistentes de IA trabalham enquanto você dorme.
@@ -78,23 +76,22 @@ const Hero: React.FC = () => {
           {/* CTA Buttons */}
           <div ref={ctaReveal.ref}>
             <div
-              className={`flex flex-col sm:flex-row items-start gap-3 pointer-events-auto transition-all duration-700 ${
-                ctaReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}
+              className={`flex flex-col sm:flex-row items-start gap-3 pointer-events-auto transition-all duration-700 ${ctaReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               style={{ transitionDelay: '600ms' }}
             >
               <a
                 href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative px-6 py-3 bg-brand-500 hover:bg-brand-400 text-black text-sm font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center gap-2"
+                className="group relative px-6 py-3 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-sm font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
                 Falar com Vendas
               </a>
               <a
                 href="#solucao"
-                className="px-6 py-3 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 text-white text-sm font-semibold rounded-lg transition-all flex items-center gap-2"
+                className="px-6 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/10 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-all flex items-center gap-2"
               >
                 Conhecer Mais
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -105,9 +102,8 @@ const Hero: React.FC = () => {
           {/* Feature Grid - Nexclinica Specific */}
           <div ref={featuresReveal.ref}>
             <div
-              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 md:mt-10 text-left transition-all duration-700 ${
-                featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 md:mt-10 text-left transition-all duration-700 ${featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
               style={{ transitionDelay: '800ms' }}
             >
               {[
@@ -129,14 +125,13 @@ const Hero: React.FC = () => {
               ].map((feature, i) => (
                 <div
                   key={i}
-                  className={`p-4 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm hover:border-brand-500/30 hover:bg-white/[0.07] transition-all pointer-events-auto group transform ${
-                    featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                  }`}
+                  className={`p-4 rounded-xl bg-white/50 dark:bg-white/5 border border-black/5 dark:border-white/5 backdrop-blur-sm hover:border-brand-600/30 dark:hover:border-brand-500/30 hover:bg-white/80 dark:hover:bg-white/[0.07] transition-all pointer-events-auto group transform ${featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                    }`}
                   style={{ transitionDelay: `${900 + i * 100}ms`, transitionDuration: '500ms' }}
                 >
-                  <feature.icon className="w-6 h-6 text-brand-400 mb-2 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-white font-semibold mb-1 text-xs" style={{ fontFamily: "'Montserrat', sans-serif" }}>{feature.title}</h3>
-                  <p className="text-slate-400 text-[11px] leading-relaxed">{feature.desc}</p>
+                  <feature.icon className="w-6 h-6 text-brand-600 dark:text-brand-400 mb-2 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-slate-900 dark:text-white font-semibold mb-1 text-xs" style={{ fontFamily: "'Montserrat', sans-serif" }}>{feature.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
             </div>

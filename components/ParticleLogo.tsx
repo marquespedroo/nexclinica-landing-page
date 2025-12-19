@@ -1,7 +1,8 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import meshData from '@/mesh-edited.json';
+import { useTheme } from './ThemeContext';
 
 // -----------------------------------------------------------------------------
 // Constants
@@ -10,14 +11,25 @@ import meshData from '@/mesh-edited.json';
 const PARTICLE_COUNT = 5000; // Reduced for cleaner, less dense look
 const FLOATING_PARTICLE_COUNT = 200; // Floating particles for space/parallax feel
 const TOTAL_PARTICLES = PARTICLE_COUNT + FLOATING_PARTICLE_COUNT;
-// Base colors: white/silver (neutral at rest)
-const COLOR_PRIMARY = new THREE.Color('#b8c4ce'); // Silver gray for fill
-const COLOR_OUTLINE = new THREE.Color('#e2e8f0'); // Light silver for edges
-// Glow colors: brand green (activated on interaction)
-const COLOR_GLOW_PRIMARY = new THREE.Color('#3e755e'); // Brand-500
-const COLOR_GLOW_OUTLINE = new THREE.Color('#5fa688'); // Brand-400
-// Floating particle color (dimmer)
-const COLOR_FLOATING = new THREE.Color('#6b7280'); // Gray-500
+
+// Theme Colors Definition
+const COLORS = {
+  dark: {
+    primary: new THREE.Color('#dce6f0'),       // Matching original texture tint (looks White/Silver)
+    outline: new THREE.Color('#f1f5f9'),       // Even lighter for outline
+    floating: new THREE.Color('#94a3b8'),      // Slate-400 (lighter than Gray-500)
+    glowPrimary: new THREE.Color('#ffffff'),   // Pure White (No Green)
+    glowOutline: new THREE.Color('#ffffff'),   // Pure White (No Green)
+  },
+  light: {
+    primary: new THREE.Color('#2eb886'),       // Vibrant Light Teal-Green
+    outline: new THREE.Color('#4cd1a3'),       // Lighter Teal
+    floating: new THREE.Color('#81e4c4'),      // Pale Teal
+    glowPrimary: new THREE.Color('#10b981'),   // Emerald-500
+    glowOutline: new THREE.Color('#34d399'),   // Emerald-400
+  }
+};
+
 const MOUSE_INFLUENCE_RADIUS = 1.8; // Smaller area of effect
 const MOUSE_ATTRACTION_STRENGTH = 0.25; // Stronger attraction
 const MOUSE_ATTRACTION_LIMIT = 0.9; // Allow more movement toward mouse
@@ -246,11 +258,11 @@ const generateMeshPoints = (count: number) => {
 // Component: Particles
 // -----------------------------------------------------------------------------
 
-const Particles: React.FC = () => {
+const Particles: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
   const { viewport, mouse } = useThree();
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
-  
+
   // Generate Texture - neutral white glow (color comes from instanceColor)
   const texture = useMemo(() => {
     const canvas = document.createElement('canvas');
@@ -258,11 +270,11 @@ const Particles: React.FC = () => {
     canvas.height = 32;
     const context = canvas.getContext('2d');
     if (context) {
-      // Soft white glow texture
+      // Soft white glow texture - must be pure white for clean tinting
       const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      gradient.addColorStop(0.3, 'rgba(220, 230, 240, 0.6)'); // Neutral light
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.6)'); // Neutral pure white
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
       context.fillStyle = gradient;
       context.fillRect(0, 0, 32, 32);
     }
@@ -270,6 +282,7 @@ const Particles: React.FC = () => {
   }, []);
 
   const particles = useMemo(() => generateMeshPoints(PARTICLE_COUNT), []);
+  const themeColors = COLORS[theme];
 
   // Simulation State
   const state = useMemo(() => {
@@ -291,13 +304,19 @@ const Particles: React.FC = () => {
       velocities[i * 3 + 1] = p.vy;
       velocities[i * 3 + 2] = p.vz;
 
-      const color = p.isFloating ? COLOR_FLOATING : (p.isOutline ? COLOR_OUTLINE : COLOR_PRIMARY);
+      const color = p.isFloating ? themeColors.floating : (p.isOutline ? themeColors.outline : themeColors.primary);
       colors[i * 3] = color.r;
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;
     });
     return { pos, original, colors, velocities };
-  }, [particles]);
+  }, [particles, theme]); // Re-calculate when theme changes to bake initial colors
+
+  // Keep track of current theme colors for the animation loop
+  const currentColors = useRef(COLORS[theme]);
+  useEffect(() => {
+    currentColors.current = COLORS[theme];
+  }, [theme]);
 
   useFrame((clockState) => {
     if (!meshRef.current) return;
@@ -373,22 +392,23 @@ const Particles: React.FC = () => {
         const floatScale = baseFloatScale + Math.sin(time * 1.5 + i) * 0.008;
         dummy.scale.set(floatScale, floatScale, floatScale);
 
-        // Color: dim gray, glow green near mouse - also dimmer when further back
-        if (meshRef.current.instanceColor) {
-          let glowIntensity = 0;
-          if (distToMouse < MOUSE_INFLUENCE_RADIUS * 1.5) {
-            glowIntensity = (1 - distToMouse / (MOUSE_INFLUENCE_RADIUS * 1.5)) * 0.7;
-          }
-          // Dimmer when further back (lower depthFactor)
-          const dimFactor = 0.4 + depthFactor * 0.6;
-          const baseR = COLOR_FLOATING.r * dimFactor;
-          const baseG = COLOR_FLOATING.g * dimFactor;
-          const baseB = COLOR_FLOATING.b * dimFactor;
-          const r = baseR + (COLOR_GLOW_PRIMARY.r - baseR) * glowIntensity;
-          const g = baseG + (COLOR_GLOW_PRIMARY.g - baseG) * glowIntensity;
-          const b = baseB + (COLOR_GLOW_PRIMARY.b - baseB) * glowIntensity;
-          meshRef.current.setColorAt(i, new THREE.Color(r, g, b));
+        // Color: dim color, glow green near mouse - also dimmer when further back
+        const cFloating = currentColors.current.floating;
+        const cGlow = currentColors.current.glowPrimary;
+
+        let glowIntensity = 0;
+        if (distToMouse < MOUSE_INFLUENCE_RADIUS * 1.5) {
+          glowIntensity = (1 - distToMouse / (MOUSE_INFLUENCE_RADIUS * 1.5)) * 0.7;
         }
+        // Dimmer when further back (lower depthFactor)
+        const dimFactor = 0.4 + depthFactor * 0.6;
+        const baseR = cFloating.r * dimFactor;
+        const baseG = cFloating.g * dimFactor;
+        const baseB = cFloating.b * dimFactor;
+        const r = baseR + (cGlow.r - baseR) * glowIntensity;
+        const g = baseG + (cGlow.g - baseG) * glowIntensity;
+        const b = baseB + (cGlow.b - baseB) * glowIntensity;
+        meshRef.current.setColorAt(i, new THREE.Color(r, g, b));
       } else {
         // Regular symbol particles
         // 1. "Thinking" Jitter
@@ -449,15 +469,18 @@ const Particles: React.FC = () => {
         const scale = baseScale + breathScale + glowScale;
         dummy.scale.set(scale, scale, scale);
 
-        if (meshRef.current.instanceColor) {
-          const baseColor = particles[i].isOutline ? COLOR_OUTLINE : COLOR_PRIMARY;
-          const glowColor = particles[i].isOutline ? COLOR_GLOW_OUTLINE : COLOR_GLOW_PRIMARY;
+        const cOutline = currentColors.current.outline;
+        const cPrimary = currentColors.current.primary;
+        const cGlowOutline = currentColors.current.glowOutline;
+        const cGlowPrimary = currentColors.current.glowPrimary;
 
-          const r = baseColor.r + (glowColor.r - baseColor.r) * glowIntensity;
-          const g = baseColor.g + (glowColor.g - baseColor.g) * glowIntensity;
-          const b = baseColor.b + (glowColor.b - baseColor.b) * glowIntensity;
-          meshRef.current.setColorAt(i, new THREE.Color(r, g, b));
-        }
+        const baseColor = particles[i].isOutline ? cOutline : cPrimary;
+        const glowColor = particles[i].isOutline ? cGlowOutline : cGlowPrimary;
+
+        const r = baseColor.r + (glowColor.r - baseColor.r) * glowIntensity;
+        const g = baseColor.g + (glowColor.g - baseColor.g) * glowIntensity;
+        const b = baseColor.b + (glowColor.b - baseColor.b) * glowIntensity;
+        meshRef.current.setColorAt(i, new THREE.Color(r, g, b));
       }
 
       dummy.updateMatrix();
@@ -475,28 +498,36 @@ const Particles: React.FC = () => {
     }
   });
 
-  // Init Colors
-  useMemo(() => {
-     if (meshRef.current) {
-        for (let i = 0; i < TOTAL_PARTICLES; i++) {
-           const r = state.colors[i*3];
-           const g = state.colors[i*3+1];
-           const b = state.colors[i*3+2];
-           meshRef.current.setColorAt(i, new THREE.Color(r, g, b));
-        }
-        meshRef.current.instanceColor!.needsUpdate = true;
-     }
+  // Force color update when theme changes, as the loop might take a frame or logic needs reset
+  useEffect(() => {
+    // We rely on the useFrame loop to pick up `currentColors.current` and update on next tick
+    // However, for static particles (if any stopped), we might want to force wake up
+  }, [theme]);
+
+  // Force buffer update when colors change (fixes reload race condition)
+  const colorAttributeRef = useRef<THREE.InstancedBufferAttribute>(null);
+  useEffect(() => {
+    if (colorAttributeRef.current) {
+      colorAttributeRef.current.needsUpdate = true;
+    }
   }, [state.colors]);
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, TOTAL_PARTICLES]}>
+    <instancedMesh key={theme} ref={meshRef} args={[undefined, undefined, TOTAL_PARTICLES]}>
       <planeGeometry args={[1, 1]} />
+      <instancedBufferAttribute
+        ref={colorAttributeRef}
+        attach="instanceColor"
+        args={[state.colors, 3]}
+      />
       <meshBasicMaterial
         map={texture}
         transparent={true}
-        blending={THREE.AdditiveBlending}
+        blending={theme === 'light' ? THREE.NormalBlending : THREE.AdditiveBlending}
         depthWrite={false}
-        opacity={0.85}
+        opacity={theme === 'light' ? 0.8 : 0.85}
+        vertexColors={false}
+        color={theme === 'light' ? '#23946b' : '#dce6f0'}
       />
     </instancedMesh>
   );
@@ -507,6 +538,8 @@ const Particles: React.FC = () => {
 // -----------------------------------------------------------------------------
 
 const ParticleLogo: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
     <div className="w-full h-full bg-transparent">
       <Canvas
@@ -519,7 +552,7 @@ const ParticleLogo: React.FC = () => {
           powerPreference: "high-performance"
         }}
       >
-        <Particles />
+        <Particles key={theme} theme={theme} />
       </Canvas>
     </div>
   );

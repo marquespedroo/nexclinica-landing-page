@@ -207,12 +207,12 @@ const FAQSection: React.FC = () => {
     <section
       id="faq"
       ref={sectionReveal.ref}
-      className="relative py-24 bg-gradient-to-b from-black via-brand-950/10 to-black overflow-hidden"
+      className="relative py-24 bg-gradient-to-b from-white via-brand-50/10 to-white dark:from-black dark:via-brand-950/10 dark:to-black overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -225,12 +225,12 @@ const FAQSection: React.FC = () => {
             FAQ
           </span>
           <h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6"
             style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
           >
             Perguntas Frequentes
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
             Respostas claras para suas dúvidas, sem complicação.
           </p>
         </div>
@@ -240,9 +240,8 @@ const FAQSection: React.FC = () => {
           {faqCategories.map((category, catIndex) => (
             <div
               key={catIndex}
-              className={`transition-all duration-700 ${
-                sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${catIndex * 100}ms` }}
             >
               {/* Category Header */}
@@ -250,7 +249,7 @@ const FAQSection: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center">
                   <category.icon className="w-5 h-5 text-brand-400" />
                 </div>
-                <h3 className="text-white font-semibold text-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <h3 className="text-slate-900 dark:text-white font-semibold text-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                   {category.title}
                 </h3>
               </div>
@@ -264,26 +263,24 @@ const FAQSection: React.FC = () => {
                   return (
                     <div
                       key={itemIndex}
-                      className="rounded-xl bg-white/5 border border-white/10 overflow-hidden hover:border-brand-500/30 transition-all"
+                      className="rounded-xl bg-white/50 dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden hover:border-brand-500/30 transition-all"
                     >
                       <button
                         onClick={() => toggleItem(key)}
                         className="w-full p-4 md:p-5 flex items-center justify-between text-left"
                       >
-                        <span className="text-white text-sm md:text-base font-medium pr-4">{item.question}</span>
+                        <span className="text-slate-900 dark:text-white text-sm md:text-base font-medium pr-4">{item.question}</span>
                         <ChevronDown
-                          className={`w-5 h-5 text-brand-400 flex-shrink-0 transition-transform duration-300 ${
-                            isOpen ? 'rotate-180' : ''
-                          }`}
+                          className={`w-5 h-5 text-brand-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+                            }`}
                         />
                       </button>
                       <div
-                        className={`overflow-hidden transition-all duration-300 ${
-                          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-                        }`}
+                        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                          }`}
                       >
                         <div className="px-4 md:px-5 pb-4 md:pb-5">
-                          <p className="text-slate-400 text-sm leading-relaxed">{item.answer}</p>
+                          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.answer}</p>
                         </div>
                       </div>
                     </div>
@@ -296,23 +293,22 @@ const FAQSection: React.FC = () => {
 
         {/* CTA */}
         <div
-          className={`text-center mt-16 transition-all duration-700 ${
-            sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center mt-16 transition-all duration-700 ${sectionReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
           style={{ transitionDelay: '800ms' }}
         >
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-brand-500/10 to-transparent border border-brand-500/20 max-w-2xl mx-auto">
-            <p className="text-xl font-semibold text-white mb-2">
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-brand-500/5 to-transparent border border-brand-500/20 max-w-2xl mx-auto">
+            <p className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
               Ainda tem dúvidas?
             </p>
-            <p className="text-slate-400 text-sm mb-6">
+            <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">
               Fale com a gente! Estamos prontos para responder qualquer pergunta, sem compromisso.
             </p>
             <a
               href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-brand-500 hover:bg-brand-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"
+              className="inline-block px-8 py-4 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)]"
             >
               Falar com Vendas
             </a>
