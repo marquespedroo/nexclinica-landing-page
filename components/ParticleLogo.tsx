@@ -258,10 +258,13 @@ const generateMeshPoints = (count: number) => {
 // Component: Particles
 // -----------------------------------------------------------------------------
 
-const Particles: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
+const Particles: React.FC<{ theme: 'light' | 'dark', onReady?: () => void }> = ({ theme, onReady }) => {
   const { viewport, mouse } = useThree();
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
+
+  // Track readiness
+  const hasSignaledReady = useRef(false);
 
   // Generate Texture - neutral white glow (color comes from instanceColor)
   const texture = useMemo(() => {
@@ -496,6 +499,13 @@ const Particles: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
     if (meshRef.current.instanceColor) {
       meshRef.current.instanceColor.needsUpdate = true;
     }
+
+    // Signal ready after the first successful frame render
+    if (onReady && !hasSignaledReady.current) {
+      hasSignaledReady.current = true;
+      // Small timeout to ensure GPU has actually finished the first meaningful paint
+      setTimeout(onReady, 100);
+    }
   });
 
   // Force color update when theme changes, as the loop might take a frame or logic needs reset
@@ -512,8 +522,18 @@ const Particles: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
     }
   }, [state.colors]);
 
+  // Responsive Scale: Bigger on mobile as requested
+  const { size } = useThree();
+  const isMobile = size.width < 768;
+  const responsiveScale = isMobile ? 1.4 : 1.0;
+
   return (
-    <instancedMesh key={theme} ref={meshRef} args={[undefined, undefined, TOTAL_PARTICLES]}>
+    <instancedMesh
+      key={theme}
+      ref={meshRef}
+      args={[undefined, undefined, TOTAL_PARTICLES]}
+      scale={[responsiveScale, responsiveScale, responsiveScale]}
+    >
       <planeGeometry args={[1, 1]} />
       <instancedBufferAttribute
         ref={colorAttributeRef}
@@ -537,7 +557,7 @@ const Particles: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
 // Component: Main Scene
 // -----------------------------------------------------------------------------
 
-const ParticleLogo: React.FC = () => {
+const ParticleLogo: React.FC<{ onReady?: () => void }> = ({ onReady }) => {
   const { theme } = useTheme();
 
   return (
@@ -552,7 +572,7 @@ const ParticleLogo: React.FC = () => {
           powerPreference: "high-performance"
         }}
       >
-        <Particles key={theme} theme={theme} />
+        <Particles key={theme} theme={theme} onReady={onReady} />
       </Canvas>
     </div>
   );

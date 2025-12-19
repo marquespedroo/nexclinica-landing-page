@@ -28,33 +28,59 @@ const useScrollReveal = (threshold = 0.1) => {
 };
 
 const Hero: React.FC = () => {
-  const headlineReveal = useScrollReveal();
-  const subheadlineReveal = useScrollReveal();
-  const ctaReveal = useScrollReveal();
-  const featuresReveal = useScrollReveal();
+  // We remove useScrollReveal for the main Hero elements because they are at the top
+  // and should follow the main cinematic entrance sequence instead of scroll triggers.
+  const featuresReveal = useScrollReveal(); // Keeping this for the feature icons potentially
+
+  // Entrance Animation States
+  const [logoReady, setLogoReady] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
+  // Stabilize the ready signal to prevent hydration/mount flicker cycles
+  const handleLogoReady = React.useCallback(() => {
+    setLogoReady(true);
+  }, []);
+
+  useEffect(() => {
+    // We only start the content timer ONCE the logo has signaled it is rendered
+    if (logoReady) {
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 1000); // 1s delay after logo is ready for a tight, professional feel
+      return () => clearTimeout(timer);
+    }
+  }, [logoReady]);
 
   return (
     <div className="relative w-full h-full flex flex-col md:flex-row md:items-center bg-gradient-to-br from-brand-50 via-white to-white dark:bg-black dark:from-black dark:via-black dark:to-black overflow-hidden transition-colors duration-300">
 
-      {/* 3D Particle Layer - Hidden on mobile (shown below), positioned right on desktop */}
-      <div className="absolute inset-0 z-0 hidden md:block">
-        <div className="absolute top-0 right-0 w-2/3 h-full translate-x-[10%] -translate-y-[5%]">
+      {/* 3D Particle Layer - Background for Mobile, Side for Desktop */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 w-full h-full md:w-2/3 md:right-0 md:translate-x-[10%] md:-translate-y-[5%]">
+          {/* Mobile Gradient Overlay for Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-transparent dark:from-black/80 dark:via-black/50 dark:to-transparent z-10 md:hidden pointer-events-none" />
+
           <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-brand-500 bg-transparent"></div>}>
-            <ParticleLogo />
+            <ParticleLogo onReady={handleLogoReady} />
           </Suspense>
         </div>
       </div>
 
-      {/* Content Layer - Aligned to the left */}
-      <div className="relative z-10 container mx-auto px-5 md:px-12 pointer-events-none pt-20 md:pt-24 pb-6 md:pb-8 md:h-full flex items-center">
-        <div className="max-w-xl text-left">
+      {/* Content Layer - Responsive Alignment */}
+      <div className="relative z-10 container mx-auto px-4 md:px-12 pointer-events-none pt-24 pb-24 md:pb-8 h-full flex items-center justify-center md:justify-start">
+        {/* Glass Card Container - Strictly Coordinated Entrance */}
+        {/* We apply 'hero-initial-hide' to ensure the browser engine hides it BEFORE scripts load */}
+        <div className={`w-full max-w-sm md:max-w-xl text-center md:text-left 
+                        md:bg-transparent md:backdrop-blur-none md:border-none md:shadow-none md:p-0 
+                        bg-white/5 dark:bg-black/20 backdrop-blur-md border border-white/10 dark:border-white/5 rounded-[2.5rem] p-6 shadow-2xl
+                        transition-all duration-1000 
+                        ${showContent ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-12 invisible hero-initial-hide'}`}>
 
           {/* Main Headline - Kinetic Typography */}
-          <div ref={headlineReveal.ref}>
+          <div className={`transition-all duration-1000 delay-100 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <h1
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 transition-all duration-700 ${headlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}
-              style={{ transitionDelay: '200ms', fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.02em' }}
+              className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-5"
+              style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.02em' }}
             >
               <span className="text-slate-900 dark:text-white">O Futuro da sua </span>
               <span className="text-brand-600 dark:text-brand-400">Clínica</span>
@@ -63,35 +89,32 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Subheadline */}
-          <div ref={subheadlineReveal.ref}>
+          <div className={`transition-all duration-1000 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <p
-              className={`text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 max-w-lg leading-relaxed transition-all duration-700 ${subheadlineReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-              style={{ transitionDelay: '500ms', fontFamily: "'Montserrat', sans-serif" }}
+              className="text-sm md:text-lg text-slate-700 dark:text-slate-200 mb-6 md:mb-8 font-medium md:font-normal max-w-lg mx-auto md:mx-0 leading-relaxed"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              Gestão unificada, CRM de WhatsApp nativo e o futuro dos assistentes de IA em um só lugar. Seus assistentes de IA trabalham enquanto você dorme.
+              Gestão unificada, CRM de WhatsApp nativo e o futuro dos assistentes de IA em um só lugar.
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div ref={ctaReveal.ref}>
+          <div className={`mb-8 md:mb-0 transition-all duration-1000 delay-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div
-              className={`flex flex-col sm:flex-row items-start gap-3 pointer-events-auto transition-all duration-700 ${ctaReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-              style={{ transitionDelay: '600ms' }}
+              className={`flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-3 pointer-events-auto`}
             >
               <a
                 href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a Nexclinica."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative px-6 py-3 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-sm font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center gap-2"
+                className="w-full sm:w-auto group relative px-8 py-3.5 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-sm font-bold rounded-xl md:rounded-lg transition-all transform hover:scale-105 shadow-[0_4px_14px_0_rgba(16,185,129,0.39)] flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
                 Falar com Vendas
               </a>
               <a
                 href="#solucao"
-                className="px-6 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/10 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-all flex items-center gap-2"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white/20 dark:bg-white/10 hover:bg-white/30 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/10 text-slate-900 dark:text-white text-sm font-semibold rounded-xl md:rounded-lg transition-all flex items-center justify-center gap-2"
               >
                 Conhecer Mais
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -99,52 +122,67 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Feature Grid - Nexclinica Specific */}
-          <div ref={featuresReveal.ref}>
+          {/* Feature Grid - Compact Static Grid for Mobile (Inside Card) */}
+          <div className={`w-full transition-all duration-1000 delay-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            {/* Divider for Mobile */}
+            <div className="block md:hidden w-full h-px bg-gradient-to-r from-transparent via-slate-400/30 to-transparent mb-5"></div>
+
             <div
-              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 md:mt-10 text-left transition-all duration-700 ${featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}
-              style={{ transitionDelay: '800ms' }}
+              className={`grid grid-cols-3 gap-2 md:gap-3 text-left`}
             >
               {[
                 {
                   icon: Brain,
-                  title: "Agentes de IA",
-                  desc: "IA conversacional que cuida de agendamentos, confirmações e follow-ups 24/7."
+                  title: "IA 24/7",
+                  desc: "Agendamento automático",
+                  fullTitle: "Agentes de IA",
+                  fullDesc: "IA conversacional que cuida de agendamentos e follow-ups."
                 },
                 {
                   icon: MessageCircle,
-                  title: "CRM WhatsApp Nativo",
-                  desc: "Todas as conversas dos pacientes em um só lugar, com contexto e histórico."
+                  title: "CRM",
+                  desc: "CRM de Whatsapp nativo",
+                  fullTitle: "CRM Nativo",
+                  fullDesc: "Todas as conversas em um só lugar com contexto."
                 },
                 {
                   icon: Calendar,
-                  title: "Gestão Unificada",
-                  desc: "Agenda, prontuário e finanças integrados em uma única plataforma."
+                  title: "Gestão",
+                  desc: "Tudo integrado.",
+                  fullTitle: "Gestão Unificada",
+                  fullDesc: "Agenda, prontuário e finanças integrados."
                 }
               ].map((feature, i) => (
                 <div
                   key={i}
-                  className={`p-4 rounded-xl bg-white/50 dark:bg-white/5 border border-black/5 dark:border-white/5 backdrop-blur-sm hover:border-brand-600/30 dark:hover:border-brand-500/30 hover:bg-white/80 dark:hover:bg-white/[0.07] transition-all pointer-events-auto group transform ${featuresReveal.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                    }`}
-                  style={{ transitionDelay: `${900 + i * 100}ms`, transitionDuration: '500ms' }}
+                  className={`flex flex-col items-center md:items-start text-center md:text-left 
+                              p-2 md:p-4 rounded-xl md:rounded-xl 
+                              md:bg-white/50 md:dark:bg-white/5 bg-transparent 
+                              md:border md:border-black/5 md:dark:border-white/5 
+                              md:backdrop-blur-sm 
+                              transition-all pointer-events-auto group transform`}
                 >
-                  <feature.icon className="w-6 h-6 text-brand-600 dark:text-brand-400 mb-2 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-slate-900 dark:text-white font-semibold mb-1 text-xs" style={{ fontFamily: "'Montserrat', sans-serif" }}>{feature.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">{feature.desc}</p>
+                  <div className={`p-2 rounded-lg bg-brand-100/50 dark:bg-white/10 md:bg-transparent md:p-0 md:rounded-none mb-2 md:mb-2`}>
+                    <feature.icon className="w-5 h-5 md:w-6 md:h-6 text-brand-700 dark:text-brand-300 md:text-brand-600 md:dark:text-brand-400 group-hover:scale-110 transition-transform" />
+                  </div>
+
+                  {/* Mobile View: Compact */}
+                  <div className="block md:hidden">
+                    <h3 className="text-slate-900 dark:text-white font-bold text-[11px] leading-tight mb-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>{feature.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-300 text-[9px] leading-tight opacity-90">{feature.desc}</p>
+                  </div>
+
+                  {/* Desktop View: Full */}
+                  <div className="hidden md:block">
+                    <h3 className="text-slate-900 dark:text-white font-semibold mb-1 text-xs" style={{ fontFamily: "'Montserrat', sans-serif" }}>{feature.fullTitle}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">{feature.fullDesc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
         </div>
-      </div>
-
-      {/* Mobile Particle Section - Shown only on mobile as its own section */}
-      <div className="relative z-10 w-full h-[50vh] md:hidden">
-        <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-brand-500 bg-transparent"></div>}>
-          <ParticleLogo />
-        </Suspense>
       </div>
     </div>
   );

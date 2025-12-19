@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Header />
       <main>
         {/* Hero Section - Auto height on mobile (content + particles), full viewport on desktop */}
-        <section className="min-h-screen md:h-screen">
+        <section className="relative h-auto md:h-screen">
           <Hero />
         </section>
 

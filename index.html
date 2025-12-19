@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexclinica - Gestão de Clínicas com Inteligência Artificial</title>
-    <meta name="description" content="Gestão unificada de clínicas com CRM de WhatsApp nativo e assistentes de IA. Agenda, prontuário e finanças em uma única plataforma." />
-    <link rel="icon" type="image/png" href="/ALTERNATIVA.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Montserrat', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-              brand: {
-                DEFAULT: '#3e755e',
-                50: '#f0f7f4',
-                100: '#dceee5',
-                200: '#bbdccd',
-                300: '#8fc4ad',
-                400: '#5fa688',
-                500: '#3e755e',
-                600: '#316a53',
-                700: '#295544',
-                800: '#234537',
-                900: '#1e392e',
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexclinica - Gestão de Clínicas com Inteligência Artificial</title>
+  <meta name="description"
+    content="Gestão unificada de clínicas com CRM de WhatsApp nativo e assistentes de IA. Agenda, prontuário e finanças em uma única plataforma." />
+  <link rel="icon" type="image/png" href="/ALTERNATIVA.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Montserrat', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3e755e',
+              50: '#f0f7f4',
+              100: '#dceee5',
+              200: '#bbdccd',
+              300: '#8fc4ad',
+              400: '#5fa688',
+              500: '#3e755e',
+              600: '#316a53',
+              700: '#295544',
+              800: '#234537',
+              900: '#1e392e',
             }
           }
         }
       }
-    </script>
-    <style>
-      body, html { margin: 0; padding: 0; min-height: 100%; font-family: 'Montserrat', sans-serif; }
-      #root { min-height: 100%; }
-      html { scroll-behavior: smooth; }
-    </style>
+    }
+  </script>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #root {
+      min-height: 100%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Critical CSS: Hide Hero content instantly on first paint to prevent flicker */
+    .hero-initial-hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -54,10 +75,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

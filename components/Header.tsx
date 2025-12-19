@@ -62,7 +62,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* CTA Buttons & Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-6">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-700 dark:text-slate-300"
@@ -70,6 +70,12 @@ const Header: React.FC = () => {
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
+            <a
+              href="http://app.nexclinica.com.br/"
+              className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+            >
+              Entrar
+            </a>
             <a
               href={whatsappLink}
               target="_blank"
@@ -101,31 +107,41 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Glassmorphic Floating Card */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-black/10 dark:border-white/10 bg-white dark:bg-black">
-            <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors px-2 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-black/10 dark:border-white/10">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 bg-brand-600 dark:bg-brand-500 hover:bg-brand-500 dark:hover:bg-brand-400 text-white dark:text-black text-sm font-bold rounded-lg transition-all text-center"
-                >
-                  Falar com Vendas
-                </a>
-              </div>
-            </nav>
+          <div className="md:hidden absolute top-[calc(100%-8px)] left-4 right-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className={`p-6 bg-white/10 dark:bg-black/40 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-[2rem] shadow-2xl overflow-hidden`}>
+              <nav className="flex flex-col gap-5">
+                {navItems.map((item, i) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="text-base font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600 dark:hover:text-brand-400 transition-all px-2 py-1 transform hover:translate-x-1"
+                    style={{ transitionDelay: `${i * 50}ms` }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+
+                <div className="flex flex-col gap-3 mt-4 pt-6 border-t border-black/5 dark:border-white/10">
+                  <a
+                    href="http://app.nexclinica.com.br/"
+                    className="px-5 py-3.5 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 text-slate-900 dark:text-white text-sm font-bold rounded-xl transition-all text-center hover:bg-white/30"
+                  >
+                    Entrar
+                  </a>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3.5 bg-brand-600 dark:bg-brand-500 text-white dark:text-black text-sm font-bold rounded-xl transition-all text-center shadow-[0_4px_14px_0_rgba(16,185,129,0.39)]"
+                  >
+                    Falar com Vendas
+                  </a>
+                </div>
+              </nav>
+            </div>
           </div>
         )}
       </div>
