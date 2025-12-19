@@ -57,8 +57,6 @@ const Hero: React.FC = () => {
       {/* 3D Particle Layer - Background for Mobile, Side for Desktop */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 w-full h-full md:w-2/3 md:right-0 md:translate-x-[10%] md:-translate-y-[5%]">
-          {/* Mobile Gradient Overlay for Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-transparent dark:from-black/80 dark:via-black/50 dark:to-transparent z-10 md:hidden pointer-events-none" />
 
           <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-brand-500 bg-transparent"></div>}>
             <ParticleLogo onReady={handleLogoReady} />
