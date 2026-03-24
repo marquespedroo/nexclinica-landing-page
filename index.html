@@ -78,6 +78,12 @@
       opacity: 0;
       visibility: hidden;
     }
+
+    /* Hide static SEO fallback content from users — only crawlers (no JS) see it */
+    #root > header,
+    #root > main {
+      display: none;
+    }
   </style>
   <script type="importmap">
 {
