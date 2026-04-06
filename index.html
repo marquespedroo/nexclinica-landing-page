@@ -8,7 +8,6 @@
   <meta name="description"
     content="Gestão unificada de clínicas com CRM de WhatsApp nativo e assistentes de IA. Agenda, prontuário e finanças em uma única plataforma." />
 
-  <!-- Social Sharing Meta Tags (Open Graph) -->
   <meta property="og:title" content="nexclinica: O Futuro da sua clínica com IA." />
   <meta property="og:description"
     content="Gestão unificada, CRM de WhatsApp nativo e o futuro dos assistentes de IA em um só lugar." />
@@ -16,7 +15,6 @@
   <meta property="og:url" content="https://www.nexclinica.com.br/" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="nexclinica: O Futuro da sua clínica com IA." />
   <meta name="twitter:description"
@@ -24,10 +22,12 @@
   <meta name="twitter:image" content="https://www.nexclinica.com.br/ALTERNATIVA.png" />
 
   <link rel="icon" type="image/png" href="/ALTERNATIVA.png" />
+  <link rel="canonical" href="https://www.nexclinica.com.br/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -56,35 +56,27 @@
       }
     }
   </script>
+
   <style>
-    body,
-    html {
+    html,
+    body {
       margin: 0;
       padding: 0;
       min-height: 100%;
       font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #0f172a;
     }
 
     #root {
       min-height: 100%;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Critical CSS: Hide Hero content instantly on first paint to prevent flicker */
-    .hero-initial-hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* Hide static SEO fallback content from users — only crawlers (no JS) see it */
-    #root > header,
-    #root > main {
-      display: none;
-    }
   </style>
+
   <script type="importmap">
 {
   "imports": {
@@ -96,11 +88,8 @@
     "react": "https://aistudiocdn.com/react@^19.2.0"
   }
 }
-</script>
-  <link rel="stylesheet" href="/index.css">
-  <link rel="canonical" href="https://www.nexclinica.com.br/" />
+  </script>
 
-  <!-- Structured Data for Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -131,236 +120,7 @@
 </head>
 
 <body>
-  <div id="root">
-    <!-- Static HTML for SEO crawlers — React hydrates over this on load -->
-    <header>
-      <nav>
-        <a href="/">nexclinica</a>
-        <ul>
-          <li><a href="#solucao">Solução</a></li>
-          <li><a href="#ia-conversacional">IA Conversacional</a></li>
-          <li><a href="#diferenciais">Diferenciais</a></li>
-          <li><a href="#impacto">Impacto</a></li>
-          <li><a href="#faq">Dúvidas</a></li>
-        </ul>
-        <a href="http://app.nexclinica.com.br/">Entrar</a>
-        <a href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.">Falar com Vendas</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero Section -->
-      <section>
-        <h1>O Futuro da sua Clínica Chegou</h1>
-        <p>Gestão unificada, CRM de WhatsApp nativo e o futuro dos assistentes de IA em um só lugar.</p>
-        <a href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.">Falar com Vendas</a>
-        <a href="#solucao">Conhecer Mais</a>
-        <ul>
-          <li><strong>Agentes de IA</strong> — IA conversacional que cuida de agendamentos e follow-ups.</li>
-          <li><strong>CRM Nativo</strong> — Todas as conversas em um só lugar com contexto.</li>
-          <li><strong>Gestão Unificada</strong> — Agenda, prontuário e finanças integrados.</li>
-        </ul>
-      </section>
-
-      <!-- Problem Section -->
-      <section>
-        <h2>Sua clínica ainda funciona assim?</h2>
-        <p>Agenda em um sistema. Prontuário em outro. Financeiro em planilha. WhatsApp lotado de mensagens que ninguém consegue responder a tempo.</p>
-        <ul>
-          <li><strong>33%</strong> dos pacientes tentam agendar fora do horário comercial — e não recebem resposta</li>
-          <li><strong>30%</strong> das consultas terminam em falta, deixando buracos na agenda e dinheiro na mesa</li>
-          <li><strong>Horas</strong> perdidas confirmando consultas, reagendando e cobrando — em vez de cuidar de quem está na clínica</li>
-        </ul>
-        <p>Você sente que trabalha mais, mas os resultados não acompanham.</p>
-        <p>O problema não é falta de esforço. É falta de <strong>integração</strong>.</p>
-      </section>
-
-      <!-- Solution Section -->
-      <section id="solucao">
-        <h2>nexclinica: o sistema que conecta tudo — e ainda responde seus pacientes por você.</h2>
-        <p>A nexclinica é um ERP completo feito especialmente para clínicas médicas. Em uma única plataforma, você gerencia:</p>
-        <ul>
-          <li><strong>Agenda inteligente</strong> — Visualize, organize e otimize seus horários com facilidade</li>
-          <li><strong>Prontuário eletrônico</strong> — Histórico completo do paciente, sempre acessível</li>
-          <li><strong>Financeiro integrado</strong> — Controle de pagamentos, cobranças e faturamento</li>
-        </ul>
-        <p>Mas o grande diferencial está no que acontece no <strong>WhatsApp</strong>.</p>
-      </section>
-
-      <!-- AI Conversational Section -->
-      <section id="ia-conversacional">
-        <h2>Uma assistente de IA que realmente entende sua clínica</h2>
-        <p>Esqueça chatbots que só respondem "aguarde um momento". A nexclinica tem uma IA conversacional nativa no WhatsApp que:</p>
-        <ul>
-          <li>Agenda consultas direto no sistema, sem intervenção humana</li>
-          <li>Confirma e lembra os pacientes automaticamente</li>
-          <li>Remarca horários quando necessário</li>
-          <li>Responde em menos de 5 segundos, a qualquer hora do dia ou da noite</li>
-          <li>Entende o contexto da conversa — como um atendente de verdade faria</li>
-        </ul>
-        <p><strong>Funciona 24 horas por dia, 7 dias por semana.</strong> Seu paciente agenda às 23h de um domingo? A IA resolve. Precisa remarcar às 6h da manhã? Feito.</p>
-        <p>Resultado: <strong>menos faltas</strong>, <strong>agenda mais cheia</strong>, <strong>equipe focada no atendimento presencial</strong>.</p>
-      </section>
-
-      <!-- Target Audience Section -->
-      <section>
-        <h2>Feito para clínicas que querem crescer sem aumentar a equipe</h2>
-        <p>A nexclinica é ideal para:</p>
-        <ul>
-          <li><strong>Clínicas médicas e de terapias</strong> — Fisioterapia, fonoaudiologia, psicologia e mais</li>
-          <li><strong>Clínicas de todos os portes</strong> — Do consultório individual à rede de clínicas</li>
-          <li><strong>Profissionais liberais</strong> — Médicos, terapeutas autônomos</li>
-          <li><strong>Clínicas que usam WhatsApp</strong> — Para se comunicar com pacientes</li>
-          <li><strong>Gestores que querem mais controle</strong> — E menos trabalho operacional</li>
-          <li><strong>Clínicas em crescimento</strong> — Que buscam escalar sem perder qualidade</li>
-        </ul>
-        <p>Se você sente que sua clínica poderia atender mais pacientes, faturar mais e trabalhar de forma mais organizada — a <strong>nexclinica</strong> foi feita para você.</p>
-      </section>
-
-      <!-- Differentiator Section -->
-      <section id="diferenciais">
-        <h2>Não é mais um chatbot. É um ERP com inteligência de verdade.</h2>
-        <p>Outras soluções do mercado oferecem chatbots genéricos que não entendem o contexto da sua clínica. Ou sistemas de gestão que não conversam com o WhatsApp. Ou integrações frágeis que quebram a todo momento.</p>
-        <p>A nexclinica nasceu <strong>diferente</strong>:</p>
-        <ul>
-          <li><strong>CRM para WhatsApp nativo</strong> — Construído do zero para funcionar perfeitamente com WhatsApp</li>
-          <li><strong>Integração nativa</strong> — Não dependemos de plataformas terceiras que encarecem e complicam</li>
-          <li><strong>LGPD by design</strong> — Dados clínicos protegidos com acesso controlado e auditável</li>
-          <li><strong>Custo acessível</strong> — Arquitetura otimizada que permite preços justos para clínicas menores</li>
-        </ul>
-        <p>Enquanto outros adaptam ferramentas genéricas, nós construímos do zero para resolver o problema <strong>de verdade</strong>.</p>
-      </section>
-
-      <!-- Comparison Section -->
-      <section>
-        <h2>Nossos diferenciais</h2>
-        <p>Veja como a nexclinica se destaca em relação às soluções tradicionais do mercado.</p>
-        <table>
-          <thead>
-            <tr><th>Funcionalidade</th><th>Concorrência</th><th>nexclinica</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Código próprio</td><td>—</td><td>Sim</td></tr>
-            <tr><td>Controle total</td><td>—</td><td>Sim</td></tr>
-            <tr><td>Segurança</td><td>—</td><td>Sim</td></tr>
-            <tr><td>Agendamento + prontuário + financeiro + faturamento</td><td>—</td><td>Sim</td></tr>
-            <tr><td>Sistema Completo + CRM de WhatsApp nativo</td><td>—</td><td>Sim</td></tr>
-            <tr><td>Custo por Atendimento</td><td>Alto e imprevisível</td><td>Baixo e previsível</td></tr>
-            <tr><td>Confiabilidade dos Assistentes de IA</td><td>Baixa</td><td>Muito alta</td></tr>
-          </tbody>
-        </table>
-        <p>Pronto para transformar a gestão da sua clínica?</p>
-        <a href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.">Falar com Vendas</a>
-      </section>
-
-      <!-- Impact Section -->
-      <section id="impacto">
-        <h2>Mais pacientes atendidos. Melhor experiência para todos.</h2>
-        <p>Cada consulta que deixa de ser perdida é um paciente que recebe cuidado no momento certo.</p>
-        <p>A nexclinica ajuda clínicas a:</p>
-        <ul>
-          <li><strong>Aumentar o faturamento</strong> — 30% em média</li>
-          <li><strong>Mais atendimentos</strong> — 30% com a mesma estrutura</li>
-          <li><strong>Reduzir filas</strong> — Tempos de espera e no-show</li>
-          <li><strong>Continuidade</strong> — Evitar interrupções de tratamento</li>
-          <li><strong>Menos estresse</strong> — Para equipes de recepção</li>
-          <li><strong>Atendimento humano</strong> — Porque a tecnologia cuida do resto</li>
-        </ul>
-        <p>Acreditamos que a tecnologia deve <strong>ampliar</strong> o acesso à saúde, não complicá-lo.</p>
-      </section>
-
-      <!-- FAQ Section -->
-      <section id="faq">
-        <h2>Perguntas Frequentes</h2>
-        <p>Respostas claras para suas dúvidas, sem complicação.</p>
-
-        <h3>Sobre o WhatsApp e a IA</h3>
-        <dl>
-          <dt>O que exatamente essa IA faz no meu WhatsApp?</dt>
-          <dd>A IA da nexclinica funciona como uma recepcionista virtual que trabalha 24 horas. Quando um paciente manda mensagem para o WhatsApp da sua clínica, a IA: Responde automaticamente (em menos de 5 segundos), entende o que o paciente quer (agendar, remarcar, tirar dúvida sobre horário), consulta a agenda real da clínica e oferece horários disponíveis, agenda a consulta direto no sistema sem precisar de ninguém, envia lembretes antes da consulta, e pede confirmação — se o paciente não puder ir, já oferece outro horário. Tudo isso acontece automaticamente, mesmo de madrugada ou no fim de semana.</dd>
-          <dt>Preciso trocar o número do WhatsApp da minha clínica?</dt>
-          <dd>Não necessariamente. Podemos configurar a IA no número que você já usa. O importante é que seja um WhatsApp Business. Se você ainda usa o WhatsApp comum, ajudamos você a migrar — é simples e você mantém o mesmo número.</dd>
-          <dt>E se a IA não souber responder algo?</dt>
-          <dd>A IA foi treinada para resolver as situações mais comuns do dia a dia de uma clínica. Mas ela sabe reconhecer quando não consegue ajudar. Nesses casos, ela avisa educadamente o paciente e direciona para atendimento humano.</dd>
-          <dt>A IA vai parecer um robô? O paciente vai perceber que não é uma pessoa?</dt>
-          <dd>A IA conversa de forma natural, como uma pessoa educada e profissional faria. Ela entende variações de linguagem, erros de digitação e diferentes formas de pedir a mesma coisa. Recomendamos transparência: muitas clínicas apresentam a IA com um nome.</dd>
-          <dt>E se o paciente quiser falar com uma pessoa de verdade?</dt>
-          <dd>A qualquer momento o paciente pode pedir para falar com um humano, e a IA encaminha a conversa. Sua equipe recebe a notificação e assume o atendimento. O histórico da conversa fica salvo.</dd>
-        </dl>
-
-        <h3>Sobre o Sistema (ERP)</h3>
-        <dl>
-          <dt>O que é esse tal de "ERP"?</dt>
-          <dd>ERP é um sistema de gestão. No caso da nexclinica, é um programa onde você controla tudo da sua clínica em um lugar só: Agenda, Prontuário e Financeiro. Em vez de ter um programa para cada coisa, você tem tudo integrado.</dd>
-          <dt>Vou precisar instalar algum programa no computador?</dt>
-          <dd>Não. A nexclinica funciona 100% no navegador de internet. Você acessa pelo site, faz login, e pronto. Funciona em qualquer computador, tablet ou até celular.</dd>
-          <dt>Quantas pessoas podem usar ao mesmo tempo?</dt>
-          <dd>Não tem limite. Cada pessoa da sua equipe terá seu próprio login. A recepcionista acessa a agenda, o médico acessa o prontuário, o financeiro vê os relatórios — cada um vê o que precisa.</dd>
-        </dl>
-
-        <h3>Sobre Segurança e LGPD</h3>
-        <dl>
-          <dt>Meus dados e dos pacientes estão seguros?</dt>
-          <dd>Sim. Todos os dados são criptografados, os servidores ficam em data centers seguros com backup automático, cada usuário só acessa o que tem permissão para ver, e registramos quem acessou o quê e quando.</dd>
-          <dt>A nexclinica está adequada à LGPD?</dt>
-          <dd>Sim. O sistema foi construído desde o início pensando na LGPD. Pedimos só os dados necessários, os dados ficam protegidos e não são compartilhados com terceiros, e temos termos de uso e política de privacidade claros.</dd>
-        </dl>
-
-        <h3>Sobre Preços e Custos</h3>
-        <dl>
-          <dt>Quanto custa a nexclinica?</dt>
-          <dd>Trabalhamos com planos mensais que variam conforme o tamanho da clínica. Nosso modelo foi pensado para ser acessível a clínicas pequenas e médias, não só para grandes redes.</dd>
-          <dt>Tem taxa de instalação ou fidelidade?</dt>
-          <dd>Cobramos uma taxa única de implantação, que cobre a configuração do sistema, treinamento da equipe e migração de dados. Não temos fidelidade: você fica porque quer.</dd>
-          <dt>Vou economizar dinheiro usando a nexclinica?</dt>
-          <dd>A economia vem de vários lados: menos faltas, mais agendamentos, menos retrabalho e mais eficiência. Muitas clínicas conseguem pagar o sistema só com a redução de faltas.</dd>
-          <dt>Posso testar antes de contratar?</dt>
-          <dd>Sim. Oferecemos uma demonstração onde mostramos o sistema funcionando e simulamos o atendimento da IA.</dd>
-        </dl>
-
-        <h3>Sobre Implementação</h3>
-        <dl>
-          <dt>Quanto tempo leva para começar a usar?</dt>
-          <dd>Em média, de 1 a 2 semanas. Acompanhamos tudo de perto. Você não fica sozinho tentando configurar.</dd>
-          <dt>Preciso de alguém de TI na minha clínica para implementar?</dt>
-          <dd>Não. Nossa equipe faz toda a configuração técnica. O treinamento para usar o sistema é simples — se sua equipe sabe usar redes sociais, vai aprender rápido.</dd>
-          <dt>Vocês dão treinamento?</dt>
-          <dd>Sim, o treinamento está incluído na implantação. Fazemos sessões online com sua equipe.</dd>
-        </dl>
-
-        <h3>Sobre Suporte</h3>
-        <dl>
-          <dt>E se eu tiver problema ou dúvida depois?</dt>
-          <dd>Temos suporte por chat e WhatsApp em horário comercial. Para questões urgentes, temos canais prioritários.</dd>
-          <dt>Vocês atualizam o sistema? Vou ter que pagar a mais?</dt>
-          <dd>Sim, melhoramos o sistema constantemente. Todas as atualizações estão incluídas no seu plano, sem custo extra.</dd>
-        </dl>
-
-        <h3>Outras Dúvidas</h3>
-        <dl>
-          <dt>Funciona para qualquer especialidade médica?</dt>
-          <dd>Sim. A nexclinica atende clínicas de diversas especialidades: clínica geral, pediatria, dermatologia, ortopedia, fisioterapia, psicologia, odontologia, e muitas outras.</dd>
-          <dt>Não entendo muito de tecnologia. Vou conseguir usar?</dt>
-          <dd>Se você usa WhatsApp, Facebook ou faz compras online, vai conseguir usar a nexclinica. O sistema foi desenhado para ser simples.</dd>
-        </dl>
-
-        <p>Ainda tem dúvidas? Fale com a gente! Estamos prontos para responder qualquer pergunta, sem compromisso.</p>
-        <a href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.">Falar com Vendas</a>
-      </section>
-
-      <!-- Final CTA Section -->
-      <section>
-        <h2>Pronto para transformar a gestão da sua clínica?</h2>
-        <p>Agende uma demonstração gratuita e veja a nexclinica funcionando na prática.</p>
-        <a href="https://wa.me/556191039745?text=Olá! Gostaria de saber mais sobre a nexclinica.">Falar com Vendas</a>
-        <ul>
-          <li>Demonstração gratuita</li>
-          <li>Sem compromisso</li>
-          <li>Suporte personalizado</li>
-        </ul>
-      </section>
-    </main>
-  </div>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
 

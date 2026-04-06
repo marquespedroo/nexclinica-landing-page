@@ -34,7 +34,7 @@ const Header: React.FC = () => {
         }`}
     >
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-20 relative">
+        <div className="grid h-20 items-center md:grid-cols-[auto_minmax(0,1fr)_auto]">
           {/* Logo */}
           <a href="/" className="flex items-center group">
             <img
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
           </a>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden items-center justify-center gap-8 px-8 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* CTA Buttons & Theme Toggle */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden items-center gap-6 justify-self-end md:flex">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-700 dark:text-slate-300"
