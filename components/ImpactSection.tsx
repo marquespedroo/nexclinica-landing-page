@@ -1,29 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { TrendingUp, Users, Clock, Heart, Smile, Stethoscope, BarChart3 } from 'lucide-react';
-
-const useScrollReveal = (threshold = 0.2) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return { ref, isVisible };
-};
+import { useScrollReveal } from './useScrollReveal';
 
 const ImpactSection: React.FC = () => {
   const sectionReveal = useScrollReveal();

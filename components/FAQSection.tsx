@@ -1,29 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, MessageCircle, Monitor, RefreshCw, Shield, DollarSign, Rocket, Wrench, Plus } from 'lucide-react';
-
-const useScrollReveal = (threshold = 0.1) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return { ref, isVisible };
-};
+import { useScrollReveal } from './useScrollReveal';
 
 interface FAQItem {
   question: string;
@@ -197,7 +174,7 @@ const FAQSection: React.FC = () => {
         },
         {
           question: 'Não entendo muito de tecnologia. Vou conseguir usar?',
-          answer: 'Se você usa WhatsApp, Facebook ou faz compras online, vai conseguir usar a nexclinica. O sistema foi desenhado para ser simples. E nossa equipe está sempre disponível para ajudar nas primeiras semanas, até você pegar o jeito. Não precisa entender de tecnologia. Precisa só querer melhorar a gestão da sua clínica — o resto a gente resolve junto.'
+          answer: 'Se você usa WhatsApp, Facebook ou faz compras online, vai conseguir usar a nexclinica. O sistema foi desenhado para ser simples. E nossa equipe está sempre disponível para ajudar nas primeiras semanas, até você pegar o jeito. Não precisa entender de tecnologia. Precisa só querer melhorar a gestão da sua clínica — o resto resolveremos juntos.'
         }
       ]
     }
