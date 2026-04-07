@@ -8,6 +8,7 @@ import TargetAudienceSection from './components/TargetAudienceSection';
 import DifferentiatorSection from './components/DifferentiatorSection';
 import ComparisonSection from './components/ComparisonSection';
 import ImpactSection from './components/ImpactSection';
+import CompanyValidationSection from './components/CompanyValidationSection';
 import FAQSection from './components/FAQSection';
 import FinalCTASection from './components/FinalCTASection';
 
@@ -41,6 +42,9 @@ const App: React.FC = () => {
 
         {/* Impact Section */}
         <ImpactSection />
+
+        {/* Company validation Section */}
+        <CompanyValidationSection />
 
         {/* FAQ Section */}
         <FAQSection />

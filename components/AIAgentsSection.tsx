@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bot, Calendar, Bell, RotateCcw, MessageSquare, Clock } from 'lucide-react';
 import { useScrollReveal } from './useScrollReveal';
 
