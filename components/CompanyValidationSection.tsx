@@ -228,7 +228,7 @@ const CompanyValidationSection: React.FC = () => {
               Equipe por trás
             </h3>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              A empresa é conduzida por uma equipe fundadora em estágio inicial, com foco em produto, tecnologia, IA e implantação para clínicas. A atuação combina desenvolvimento de software, desenho de fluxos operacionais e suporte na adoção do sistema.
+              A Nexclinica conta com desenvolvedores com experiência internacional, especialistas em segurança da informação com passagem por grandes empresas globais e profissionais especializados em LGPD e proteção de dados. Essa combinação garante um produto robusto, seguro e em total conformidade com a legislação brasileira de privacidade.
             </p>
           </div>
         </div>
